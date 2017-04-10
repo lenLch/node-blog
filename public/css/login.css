@@ -1,0 +1,40 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.login {
+    width: 500px;
+    height: 360px;
+    margin: 100px auto;
+    background: #b3b3b3;
+    conten-box: border-box;
+    text-align: center;
+}
+h4 {
+    color: #a9302a;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.login > div {
+    height: 60px;
+}
+.login > a {
+    display: block;
+    height: 30px;
+    width: 100px;
+    float: right;
+    margin-right: 100px;
+    line-height: 30px;
+    font-size: 18px;
+    color: black;
+    background: #e9322d;
+}
+.login > p {
+    margin-top: 50px;
+    height: 10px;
+}
+.tishi {
+    font-size: 20px;
+    color: fuchsia;
+}

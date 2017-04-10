@@ -1,0 +1,59 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+    <div class="wenzhang">
+        <div class="content w" id="view">
+            <h3>{{content.title}}</h3>
+            <p class="information">
+                作者: <span>admin</span>-
+                时间: <span>{{content.addTime|date('Y年m月d日 H:i:s',-8 * 60)}}</span>-
+                阅读: <span>{{content.views}}</span>-
+                评论: <span>{{content.comments.length}}</span>
+            </p>
+            <p id="content">{{content.content}}</p>
+        </div>
+    </div>
+
+    <div class="pinglun w">
+        <div class="top">
+            <h4>评论</h4>
+            <span>一共有 <i id="count">0</i> &nbsp;条评论</span>
+        </div>
+        {% if userInfo._id || newUserInfo._id %}
+        <div class="username">{{userInfo.username || newUserInfo.username}}</div>
+        <div class="submit clearfix">
+            <textarea id="messageContet"></textarea>
+            <input type="hidden" id="contentId" value="{{content._id.toString()}}">
+            <button id="messageBtn" class="tijiao">提交</button>
+        </div>
+        {% else %}
+        <div class="login">您还没有登录，<a href="./login">请登录！</a></div>
+        {% endif %}
+        <div class="liuyan" id="liuyan">
+
+        </div>
+
+        <div class="pager">
+            <ul class="clearfix">
+                <li class="previous">
+                    <a href="">上一页</a>
+                </li>
+                <li class="center"></li>
+                <li class="next">
+                    <a href="">下一页</a>
+                </li>
+            </ul>
+        </div>
+        <!--<div class="liuyan">
+            <p>还没有留言</p>
+            <div class="yonghu">
+                <div class="hei">
+                    <span>admin</span>
+                    <span>2017年</span>
+                </div>
+                <p>hello world</p>
+            </div>
+        </div>-->
+    </div>
+<script src="/public/js/comment.js"></script>
+{% endblock %}

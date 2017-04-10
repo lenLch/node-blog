@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nodejs 个人博客</title>
+    <link rel="stylesheet" href="/public/css/index.css">
+    <script src="/public/js/jquery-3.1.1.min.js"></script>
+
+</head>
+<body>
+<div class="header">
+    <p>欢迎光临我的博客！！！</p>
+    {% if userInfo._id %}
+    {% if userInfo.isAdmin %}
+    <p class="user">您好！
+        <span class="username">管理员</span>
+        <a href="/admin">进入管理</a>
+    </p>
+    {% else %}
+    <p class="user">您好！ <span class="username">{{userInfo.username}}</span></p>
+    {% endif %}
+    <a href="javascript: ;" class="exit">退出</a>
+    {% endif %}
+
+    {% if newUserInfo._id %}
+    {% if newUserInfo.isAdmin %}
+    <p class="user">您好！
+        <span class="username">管理员</span>
+        <a href="/admin">进入管理</a>
+    </p>
+    {% else %}
+    <p class="user">您好！ <span class="username">{{newUserInfo.username}}</span></p>
+    {% endif %}
+    <a href="javascript: ;" class="exit">退出</a>
+    {% endif %}
+</div>
+
+<div class="daohang">
+    <ul class="w" id="nav">
+        <li><a href="/?page=1">首页</a></li>
+        {% for cate in categories %}
+        <li><a href="/?category={{cate.id}}">{{cate.name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% block content %}{% endblock %}
+
+<script src="/public/js/index.js"></script>
+</body>
+</html>

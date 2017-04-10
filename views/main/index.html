@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="wenzhang">
+    {% for content in contents %}
+    <div class="content w">
+        <h3>{{content.title}}</h3>
+        <p class="information">
+            作者: <span>{{content.user.username}}</span>-
+            时间: <span>{{content.addTime|date('Y年m月d日 H:i:s',-8 * 60)}}</span>-
+            阅读: <span>{{content.views}}</span>-
+            评论: <span>{{content.comments.length}}</span>
+        </p>
+        <p class="category">{{content.description}}</p>
+        <a href="/view?contentid={{content.id}}" class="all">阅读全文</a>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="fenye">
+    <ul class="w">
+        <li>
+            {% if page <= 1 %}
+            <span>没有上一页</span>
+            {% else %}
+            <a href="/?category={{category}}&page={{page-1}}">上一页</a>
+            {% endif %}
+        </li>
+        <li>
+            {% if pages >= 1 %}
+            <strong>{{page}} / {{pages}}</strong>
+            {% else %}
+            <span>当前分类下没有内容</span>
+            {% endif %}
+        </li>
+        <li>
+            {% if page >= pages %}
+            <span>没有下一页</span>
+            {% else %}
+            <a href="/?category={{category}}&page={{page+1}}">下一页</a>
+            {% endif %}
+        </li>
+    </ul>
+</div>
+{% endblock %}
